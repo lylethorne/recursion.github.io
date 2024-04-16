@@ -50,7 +50,7 @@ var isEven = function(n, output='') {
 // sumBelow(7); // 21
 var sumBelow = function(n, output=0) {
   if(Array.isArray(n) === true){
-   n.reduce((accumulator, currentValue) => accumulator + currentValue, output,
+   return n.reduce((accumulator, currentValue) => accumulator + currentValue, output,
    );
   }else if (n === 1 || n === 0){
     return output;
@@ -61,8 +61,12 @@ var sumBelow = function(n, output=0) {
 
 // 6. Get the integers in range (x, y).
 // Example:  range(2, 9);  // [3, 4, 5, 6, 7, 8]
-var range = function(x, y) {
-
+var range = function(x, y, output =[]) {
+  if(x < y ){
+    return output.push(x, y);
+  }
+output.push()
+return range(x, y, output);
 };
 
 // 7. Compute the exponent of a number.
@@ -77,15 +81,37 @@ var exponent = function(base, exp) {
 // powerOfTwo(1); // true
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
-var powerOfTwo = function(n) {
+var powerOfTwo = function(n, output) {
+  if(n & (n - 1) == 0){
+    return output = true
+  }else{
+    return output = false;
+  }
+  return powerOfTwo(n - 2)
 };
 
 // 9. Write a function that accepts a string a reverses it.
-var reverse = function(string) {
+var reverse = function(string, output='') {
+  if(string.length === 0){
+    return output;
+  }
+  output += string[string.length -1];
+  return reverse(string.slice(0, -1), output);
 };
 
 // 10. Write a function that determines if a string is a palindrome.
-var palindrome = function(string) {
+var palindrome = function(string, output='') {
+  let regex = /[^A-Za-z0–9]/g; 
+  let noCase = string.toLowerCase().replace(regex, '');
+  let reverse = noCase.split('').reverse().join('');
+
+  if(reverse === noCase ){
+    return true
+  }else{
+    return false;
+  }
+
+  return palindrome(string.slice(0, -1), output)
 };
 
 // 11. Write a function that returns the remainder of x divided by y without using the
@@ -130,12 +156,22 @@ var gcd = function(x, y) {
 // compareStr('house', 'houses') // false
 // compareStr('', '') // true
 // compareStr('tomato', 'tomato') // true
-var compareStr = function(str1, str2) {
+var compareStr = function(str1, str2, output) {
+  //base
+  //recursion
+  return compareStr(str1.slice(1), str2.slice(1))
 };
 
 // 16. Write a function that accepts a string and creates an array where each letter
 // occupies an index of the array.
-var createArray = function(str){
+var createArray = function(str, output=[]){
+  //base
+  if(str.length === 0){
+    return output;
+  }
+  output.push(str[0]);
+  //recursion
+  return createArray(str.slice(1), output);
 };
 
 // 17. Reverse the order of an array
