@@ -8,7 +8,7 @@ var factorial = function(n, product) {
   //base
 if(n < 0){
   return null;
-} else if(n === 1 || n ===0 ){
+} else if(n === 1 || n === 0 ){
   return product;
 }
   //recursion
@@ -26,7 +26,6 @@ if(array.length === 0){
   //recursion
   output += array[0]; 
   return sum(array.slice(1), output);
-  
 };
 
 // 3. Sum all numbers in an array containing nested arrays.
@@ -37,18 +36,33 @@ var arraySum = function(array) {
 ///NOT THIS ONE
 
 // 4. Check if a number is even.
-var isEven = function(n) {
+var isEven = function(n, output='') {
+  if(n === 1){
+    return output = false;
+  }else if(n === 0){
+    return output = true;
+  }
+  return isEven(n - 2, output);
 };
 
 // 5. Sum all integers below a given integer.
 // sumBelow(10); // 45
 // sumBelow(7); // 21
-var sumBelow = function(n) {
+var sumBelow = function(n, output=0) {
+  if(Array.isArray(n) === true){
+   n.reduce((accumulator, currentValue) => accumulator + currentValue, output,
+   );
+  }else if (n === 1 || n === 0){
+    return output;
+  }
+  output += n;
+  return sumBelow(n - 1, output);
 };
 
 // 6. Get the integers in range (x, y).
 // Example:  range(2, 9);  // [3, 4, 5, 6, 7, 8]
 var range = function(x, y) {
+
 };
 
 // 7. Compute the exponent of a number.
@@ -87,7 +101,11 @@ var modulo = function(x, y) {
 // 12. Write a function that multiplies two numbers without using the * operator  or
 // JavaScript's Math object.
 // ATTENTION DO NOT LEAVE COMMENTS IN THIS FUNCTION. The test is looking for any ('/').
+
+//2 * 4 = 2+ 2+ 2+ 2+ 
 var multiply = function(x, y) {
+
+
 };
 
 // 13. Write a function that divides two numbers without using the / operator  or
