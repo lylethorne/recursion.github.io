@@ -62,11 +62,16 @@ var sumBelow = function(n, output=0) {
 // 6. Get the integers in range (x, y).
 // Example:  range(2, 9);  // [3, 4, 5, 6, 7, 8]
 var range = function(x, y, output =[]) {
-  if(x < y ){
-    return output.push(x, y);
+  if(y - x === 1){
+    return output;
+  }else if(y - x === 2){
+    return [x + 1];
+  }else{
+    let output = range(x, y -1);
+    output.push(y - 1);
+    return output;
   }
-output.push()
-return range(x, y, output);
+ 
 };
 
 // 7. Compute the exponent of a number.
