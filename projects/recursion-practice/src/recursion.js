@@ -58,13 +58,14 @@ var isEven = function(n) {
 // sumBelow(10); // 45
 // sumBelow(7); // 21
 var sumBelow = function(n, output=0) {
-  if(Array.isArray(n) === true){
-   return n.reduce((accumulator, currentValue) => accumulator + currentValue, output,
-   );
-  }else if (n === 1 || n === 0){
+  if (n === 1 || n === 0 || n === -1){
     return output;
   }
-  output += n;
+  if(n < 0){
+    output += n + 1;
+    return sumBelow(n + 1, output);
+  }
+  output += n - 1;
   return sumBelow(n - 1, output);
 };
 
@@ -94,10 +95,13 @@ var exponent = function(base, exp) {
     return base;
   }else if(exp === 0){
     return 1;
-  }else{
+  }
+  if(base < 0){
+    return base * exponent(base, exp + 1);
+  }
     //recursion
     return base * exponent(base, exp - 1);
-  }
+  
 };
 
 // 8. Determine if a number is a power of two.
