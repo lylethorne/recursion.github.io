@@ -4,7 +4,7 @@
 // denoted by n!, is the product of all positive integers less than or equal to n.
 // Example:  5! = 5 x 4 x 3 x 2 x 1 = 120
 // factorial(5);  // 120
-var factorial = function(n, product) {
+var factorial = function(n, product=1) {
   //base
 if(n < 0){
   return null;
@@ -110,13 +110,11 @@ var exponent = function(base, exp) {
 // powerOfTwo(1); // true
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
-var powerOfTwo = function(n, output) {
-  if(n & (n - 1) == 0){
-    return output = true
-  }else{
-    return output = false;
+var powerOfTwo = function(n) {
+  if(Math.pow(n, 2) ){
+    return true;
   }
-  return powerOfTwo(n - 2)
+  return powerOfTwo(n - 2);
 };
 
 // 9. Write a function that accepts a string a reverses it.
@@ -165,7 +163,6 @@ var multiply = function(x, y) {
   }
 //recursion
 return x + multiply(x, y - 1);
-
 };
 
 // 13. Write a function that divides two numbers without using the / operator  or
