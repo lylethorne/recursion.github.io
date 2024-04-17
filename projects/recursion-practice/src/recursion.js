@@ -36,13 +36,22 @@ var arraySum = function(array) {
 ///NOT THIS ONE
 
 // 4. Check if a number is even.
-var isEven = function(n, output='') {
+var isEven = function(n) {
+  if(n > 0){
   if(n === 1){
-    return output = false;
+    return false;
   }else if(n === 0){
-    return output = true;
+    return true;
   }
-  return isEven(n - 2, output);
+  return isEven(n - 2);
+}else{
+  if(n === 1){
+    return false;
+  }else if(n === 0){
+    return true;
+  }
+  return isEven(n + 2)
+}
 };
 
 // 5. Sum all integers below a given integer.
@@ -62,16 +71,16 @@ var sumBelow = function(n, output=0) {
 // 6. Get the integers in range (x, y).
 // Example:  range(2, 9);  // [3, 4, 5, 6, 7, 8]
 var range = function(x, y, output =[]) {
-  if(y - x === 1){
-    return output;
-  }else if(y - x === 2){
-    return [x + 1];
-  }else{
-    let output = range(x, y -1);
-    output.push(y - 1);
+  if(x - y === -1 || x - y === 1){
     return output;
   }
- 
+  if(x > y){
+    output.push(x - 1);
+    return range(x -1, y, output)
+  }else{
+    output.push(x + 1);
+    return range(x + 1, y, output)
+  }
 };
 
 // 7. Compute the exponent of a number.
@@ -144,7 +153,12 @@ var modulo = function(x, y) {
 
 //2 * 4 = 2+ 2+ 2+ 2+ 
 var multiply = function(x, y) {
-
+//base
+  if(y === 1){
+    return x;
+  }
+//recursion
+return x + multiply(x, y - 1);
 
 };
 
