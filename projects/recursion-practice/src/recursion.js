@@ -93,10 +93,12 @@ var exponent = function(base, exp) {
   //base
   if(exp === 1){
     return base;
+    //base 2
   }else if(exp === 0){
     return 1;
   }
-  if(base < 0){
+  //base 3 
+  if(exp < 0){
     return base * exponent(base, exp + 1);
   }
     //recursion
