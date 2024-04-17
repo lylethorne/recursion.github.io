@@ -75,6 +75,15 @@ return range(x, y, output);
 // Example:  exponent(4,3);  // 64
 // https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/computing-powers-of-a-number
 var exponent = function(base, exp) {
+  //base
+  if(exp === 1){
+    return base;
+  }else if(exp === 0){
+    return 1;
+  }else{
+    //recursion
+    return base * exponent(base, exp - 1);
+  }
 };
 
 // 8. Determine if a number is a power of two.
@@ -325,7 +334,17 @@ var flatten = function(arrays) {
 ///NOT THIS ONE
 // 30. Given a string, return an object containing tallies of each letter.
 // letterTally('potato'); // {'p':1, 'o':2, 't':2, 'a':1}
-var letterTally = function(str, obj) {
+var letterTally = function(str, obj={}, count=1) {
+  //base
+  if(str.length === 0){
+    return obj;
+  }
+  if(!obj.str[0]){
+    obj.str[0] += count;
+    count++;
+  }
+  //recursion
+  return letterTally(str.slice(1), obj, count);
 };
 
 // 31. Eliminate consecutive duplicates in a list.  If the list contains repeated
@@ -333,7 +352,16 @@ var letterTally = function(str, obj) {
 // elements should not be changed.
 // Example: compress([1, 2, 2, 3, 4, 4, 5, 5, 5]) // [1, 2, 3, 4, 5]
 // Example: compress([1, 2, 2, 3, 4, 4, 2, 5, 5, 5, 4, 4]) // [1, 2, 3, 4, 2, 5, 4]
-var compress = function(list) {
+var compress = function(list, output=[]) {
+  //base
+  if(list.length === 0){
+    return output;
+  }//base2
+  if(output.includes(list[0]) !== true){
+    output.push(list[0]);
+  }
+  //recursion
+  return compress(list.slice(1), output);
 };
 
 // 32. Augment every element in a list with a new value where each element is an array
