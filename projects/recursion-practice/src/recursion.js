@@ -71,7 +71,7 @@ var sumBelow = function(n, output=0) {
 // 6. Get the integers in range (x, y).
 // Example:  range(2, 9);  // [3, 4, 5, 6, 7, 8]
 var range = function(x, y, output =[]) {
-  if(x - y === -1 || x - y === 1){
+  if(x - y === -1 || x - y === 1 || x - y === 0){
     return output;
   }
   if(x > y){
