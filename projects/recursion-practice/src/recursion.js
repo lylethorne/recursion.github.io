@@ -169,6 +169,7 @@ return x + multiply(x, y - 1);
 // JavaScript's Math object.
 ///NOT THIS ONE
 var divide = function(x, y) {
+  
 };
 ///NOT THIS ONE
 
@@ -187,10 +188,23 @@ var gcd = function(x, y) {
 // compareStr('house', 'houses') // false
 // compareStr('', '') // true
 // compareStr('tomato', 'tomato') // true
-var compareStr = function(str1, str2, output) {
+var compareStr = function(str1, str2) {
   //base
-  //recursion
-  return compareStr(str1.slice(1), str2.slice(1))
+  if(str1.length !== str2.length){
+    return false;
+  }
+  if(str1.charAt[0] !== str2.charAt[0]){
+    return compareStr(str1.slice(1), str2.slice(1));
+  }
+  // if(str1.length === str2.length){
+  //   if(str1[0] === str2[0]){
+  //   return true;  
+  //   }
+    
+  // }else{
+  //   return false;
+  // }
+  return true;
 };
 
 // 16. Write a function that accepts a string and creates an array where each letter
@@ -363,10 +377,10 @@ var letterTally = function(str, obj={}, count=1) {
   }
   if(!obj.str[0]){
     obj.str[0] += count;
-    count++;
   }
+
   //recursion
-  return letterTally(str.slice(1), obj, count);
+  return letterTally(str.slice(1), obj, count++);
 };
 
 // 31. Eliminate consecutive duplicates in a list.  If the list contains repeated
@@ -379,7 +393,7 @@ var compress = function(list, output=[]) {
   if(list.length === 0){
     return output;
   }//base2
-  if(output.includes(list[0]) !== true){
+  if(list[0] !== list[1]){
     output.push(list[0]);
   }
   //recursion
@@ -397,7 +411,16 @@ var augmentElements = function(array, aug) {
 // 33. Reduce a series of zeroes to a single 0.
 // minimizeZeroes([2,0,0,0,1,4]) // [2,0,1,4]
 // minimizeZeroes([2,0,0,0,1,0,0,4]) // [2,0,1,0,4]
-var minimizeZeroes = function(array) {
+var minimizeZeroes = function(array, output=[]) {
+  //base
+  if(array.length === 0){
+    return output;
+  }
+  //recursion
+  if(array[0] !== array[1]){
+    output.push(array[0]);
+  }
+  return minimizeZeroes(array.slice(1), output);
 };
 
 // 34. Alternate the numbers in an array between positive and negative regardless of
@@ -410,7 +433,47 @@ var alternateSign = function(array) {
 // 35. Given a string, return a string with digits converted to their word equivalent.
 // Assume all numbers are single digits (less than 10).
 // numToText("I have 5 dogs and 6 ponies"); // "I have five dogs and six ponies"
-var numToText = function(str) {
+var numToText = function(str, output='') {
+  //base
+  if(str.length === 0){
+    return output;
+  }
+  switch(str[0]){
+    case 1:
+      output +=  'one';
+      break;
+    case 2: 
+      output +=  'two';
+      break;
+    case 3:
+      output +=  'three';
+      break;
+    case 4:
+      output +=  'four';
+      break;
+    case 5:
+      output +=  'five';
+      break;
+    case 6:
+      output +=  'six';
+      break;
+    case 7: 
+      output +=  'seven';
+      break;
+    case 8:
+      output +=  'eight';
+      break;
+    case 9:
+      output +=  'nine';
+      break;
+    case 10:
+      output +=  'ten';
+      break;
+    default:
+      output +=  str[0];
+  }
+  //recursion
+  return numToText(str.slice(1), output);
 };
 
 // *** EXTRA CREDIT ***
