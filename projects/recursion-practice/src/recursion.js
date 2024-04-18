@@ -311,15 +311,17 @@ var fibonacci = function(n) {
 // nthFibo(5); // 5
 // nthFibo(7); // 13
 // nthFibo(3); // 2
-var nthFibo = function(n, output=0) {
+var nthFibo = function(n) {
   //base
   if(n < 0){
     return null
   }else if(n === 0){
-    return output;
+    return 0;
+  }else if(n < 2){
+    return 1;
   }
   //recursion
-  return nthFibo(n, output)
+  return nthFibo(n - 2) + nthFibo(n - 1);
 };
 
 // 26. Given an array of words, return a new array containing each word capitalized.
@@ -370,17 +372,19 @@ var flatten = function(arrays) {
 ///NOT THIS ONE
 // 30. Given a string, return an object containing tallies of each letter.
 // letterTally('potato'); // {'p':1, 'o':2, 't':2, 'a':1}
-var letterTally = function(str, obj={}, count=1) {
+var letterTally = function(str, obj={}) {
   //base
   if(str.length === 0){
     return obj;
   }
-  if(!obj.str[0]){
-    obj.str[0] += count;
+  if(!obj[str[0]]){
+    obj[str[0]] = 1;
+  }else{
+    obj[str[0]] += 1;
   }
 
   //recursion
-  return letterTally(str.slice(1), obj, count++);
+  return letterTally(str.slice(1), obj);
 };
 
 // 31. Eliminate consecutive duplicates in a list.  If the list contains repeated
@@ -439,34 +443,34 @@ var numToText = function(str, output='') {
     return output;
   }
   switch(str[0]){
-    case 1:
+    case '1':
       output +=  'one';
       break;
-    case 2: 
+    case '2': 
       output +=  'two';
       break;
-    case 3:
+    case '3':
       output +=  'three';
       break;
-    case 4:
+    case '4':
       output +=  'four';
       break;
-    case 5:
+    case '5':
       output +=  'five';
       break;
-    case 6:
+    case '6':
       output +=  'six';
       break;
-    case 7: 
+    case '7': 
       output +=  'seven';
       break;
-    case 8:
+    case '8':
       output +=  'eight';
       break;
-    case 9:
+    case '9':
       output +=  'nine';
       break;
-    case 10:
+    case '10':
       output +=  'ten';
       break;
     default:
