@@ -111,10 +111,7 @@ var exponent = function(base, exp) {
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
 var powerOfTwo = function(n) {
-  if(Math.pow(n, 2) ){
-    return true;
-  }
-  return powerOfTwo(n - 2);
+  return n== 1 ? true : (n< 1 ? false : powerOfTwo(n/2))
 };
 
 // 9. Write a function that accepts a string a reverses it.
