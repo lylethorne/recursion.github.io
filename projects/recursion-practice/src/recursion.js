@@ -194,18 +194,13 @@ var compareStr = function(str1, str2) {
   if(str1.length !== str2.length){
     return false;
   }
-  if(str1.charAt[0] !== str2.charAt[0]){
+  if(str1.length === 0 && str2.length === 0){
+    return true;
+  }
+  if(str1.charAt[0] === str2.charAt[0]){
     return compareStr(str1.slice(1), str2.slice(1));
   }
-  // if(str1.length === str2.length){
-  //   if(str1[0] === str2[0]){
-  //   return true;  
-  //   }
-    
-  // }else{
-  //   return false;
-  // }
-  return true;
+ 
 };
 
 // 16. Write a function that accepts a string and creates an array where each letter
