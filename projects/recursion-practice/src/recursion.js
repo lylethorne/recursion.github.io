@@ -157,12 +157,16 @@ var modulo = function(x, y) {
 
 //2 * 4 = 2+ 2+ 2+ 2+ 
 var multiply = function(x, y) {
-//base
-  if(y === 1){
+  if(y === 0 || x === 0){
+    return 0;
+  }else if( y === 1){
     return x;
+  }else if( x === 1){
+    return y;
+  }else if (x < 0 || y < 0){
+return multiply(x + 1, y) - y;
   }
-//recursion
-return x + multiply(x, y - 1);
+return multiply(x - 1, y) + y;
 };
 
 // 13. Write a function that divides two numbers without using the / operator  or
