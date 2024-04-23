@@ -99,7 +99,7 @@ var exponent = function(base, exp) {
   }
   //base 3 
   if(exp < 0){
-    return base * exponent(base, exp + 1);
+    return 1 / exponent(base, -exp);
   }
     //recursion
     return base * exponent(base, exp - 1);
@@ -124,18 +124,19 @@ var reverse = function(string, output='') {
 };
 
 // 10. Write a function that determines if a string is a palindrome.
-var palindrome = function(string, output='') {
+var palindrome = function(string) {
   let regex = /[^A-Za-z0–9]/g; 
   let noCase = string.toLowerCase().replace(regex, '');
-  let reverse = noCase.split('').reverse().join('');
-
-  if(reverse === noCase ){
-    return true
-  }else{
-    return false;
+  //if beginning of nocase does not match the end
+  if(noCase[0] !== noCase.length - 1){
+    return false
   }
-
-  return palindrome(string.slice(0, -1), output)
+ if(noCase.length === 0 || noCase.length === 1){
+  return true
+ }
+  if(noCase[0] === noCase.length - 1){
+    return palindrome(string.slice(1, -1))
+  }
 };
 
 // 11. Write a function that returns the remainder of x divided by y without using the
@@ -195,12 +196,12 @@ var compareStr = function(str1, str2) {
     return false;
   }
   if(str1.length === 0 && str2.length === 0){
-    return true;
+    return true
   }
   if(str1.charAt[0] === str2.charAt[0]){
     return compareStr(str1.slice(1), str2.slice(1));
-  }
- 
+  } 
+  return compareStr(str1.slice(1), str2.slice(1));
 };
 
 // 16. Write a function that accepts a string and creates an array where each letter
