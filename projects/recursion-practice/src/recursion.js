@@ -128,15 +128,16 @@ var palindrome = function(string) {
   let regex = /[^A-Za-z0–9]/g; 
   let noCase = string.toLowerCase().replace(regex, '');
   //if beginning of nocase does not match the end
-  if(noCase[0] !== noCase.length - 1){
-    return false
+  if(noCase[0] === noCase.length - 1){
+    return true
   }
  if(noCase.length === 0 || noCase.length === 1){
   return true
  }
-  if(noCase[0] === noCase.length - 1){
+  if(noCase.substring(0) === noCase.substring(-1)){
     return palindrome(string.slice(1, -1))
   }
+  return false;
 };
 
 // 11. Write a function that returns the remainder of x divided by y without using the
@@ -192,16 +193,13 @@ var gcd = function(x, y) {
 // compareStr('tomato', 'tomato') // true
 var compareStr = function(str1, str2) {
   //base
-  if(str1.length !== str2.length){
-    return false;
-  }
   if(str1.length === 0 && str2.length === 0){
     return true
   }
-  if(str1.charAt[0] === str2.charAt[0]){
+  if(str1.substring(0) === str2.substring(0)){
     return compareStr(str1.slice(1), str2.slice(1));
   } 
-  return compareStr(str1.slice(1), str2.slice(1));
+  return false;
 };
 
 // 16. Write a function that accepts a string and creates an array where each letter
