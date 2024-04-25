@@ -125,19 +125,17 @@ var reverse = function(string, output='') {
 
 // 10. Write a function that determines if a string is a palindrome.
 var palindrome = function(string) {
-  let regex = /[^A-Za-z]/g; 
-  let noCase = string.toLowerCase().replace(regex, '');
-  //if beginning of nocase does not match the end
-  if(noCase[0] === noCase.length - 1){
-    return true
-  }
- if(noCase.length <= 1){
-  return true
- }
-  if(noCase.substring(0) === noCase.substring(-1)){
-    return palindrome(string.slice(1, -1))
-  }
-  return false;
+  //changing string to lowercase without characters
+  string = string.replace(/[^a-z0-9]/i, '').toLowerCase();
+//base
+  if (string.length <= 1){
+    return true;
+  } 
+    if (string[0] !== string[string.length - 1]){
+      return false;
+    } 
+  //recursion
+  return palindrome(string.slice(1, -1));
 };
 
 // 11. Write a function that returns the remainder of x divided by y without using the
@@ -192,14 +190,14 @@ var gcd = function(x, y) {
 // compareStr('', '') // true
 // compareStr('tomato', 'tomato') // true
 var compareStr = function(str1, str2) {
-  //base
-  if(str1.length === 0 && str2.length === 0){
-    return true
-  }
-  if(str1.substring(0) === str2.substring(0)){
-    return compareStr(str1.slice(1), str2.slice(1));
+  if (str1.length === 0 && str2.length === 0){
+    return true;
   } 
-  return false;
+    if (str1[0] !== str2[0]){
+      return false;
+    } 
+  //recursion
+  return compareStr(str1.slice(1), str2.slice(1));
 };
 
 // 16. Write a function that accepts a string and creates an array where each letter
