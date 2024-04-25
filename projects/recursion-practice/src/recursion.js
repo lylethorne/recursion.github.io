@@ -111,7 +111,7 @@ var exponent = function(base, exp) {
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
 var powerOfTwo = function(n) {
-  return n== 1 ? true : (n< 1 ? false : powerOfTwo(n/2))
+  return n == 1 ? true : (n < 1 ? false : powerOfTwo(n/2))
 };
 
 // 9. Write a function that accepts a string a reverses it.
@@ -125,13 +125,13 @@ var reverse = function(string, output='') {
 
 // 10. Write a function that determines if a string is a palindrome.
 var palindrome = function(string) {
-  let regex = /[^A-Za-z0–9]/g; 
+  let regex = /[^A-Za-z]/g; 
   let noCase = string.toLowerCase().replace(regex, '');
   //if beginning of nocase does not match the end
   if(noCase[0] === noCase.length - 1){
     return true
   }
- if(noCase.length === 0 || noCase.length === 1){
+ if(noCase.length <= 1){
   return true
  }
   if(noCase.substring(0) === noCase.substring(-1)){
